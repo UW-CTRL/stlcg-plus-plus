@@ -507,6 +507,9 @@ class Predicate(torch.nn.Module):
         assert not isinstance(rhs, str), "RHS cannot be a string"
         return Equal(lhs, rhs)
 
+    def __hash__(self):
+        return hash((self.name, self.predicate_function))
+
     def __str__(self):
         """
         String representation of the predicate.
